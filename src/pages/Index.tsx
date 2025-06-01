@@ -4,78 +4,114 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
-  const categories = [
+  const productCategories = [
     {
-      title: "Для дома",
-      icon: "Home",
-      subcategories: [
-        { name: "Мебель", count: 1200, icon: "Armchair" },
-        { name: "Текстиль", count: 890, icon: "Shirt" },
-        { name: "Декор", count: 650, icon: "Palette" },
-        { name: "Освещение", count: 320, icon: "Lightbulb" },
+      title: "Бензин",
+      icon: "Car",
+      description: "Экологически чистый бензин с низким содержанием серы",
+      products: [
+        { name: "Бензин АИ-92 ЭКО", price: "52.80", eco: "Евро-5" },
+        { name: "Бензин АИ-95 ЭКО", price: "56.20", eco: "Евро-6" },
+        { name: "Бензин АИ-98 Премиум", price: "62.90", eco: "Класс К5" },
       ],
     },
     {
-      title: "Для сада",
-      icon: "TreePine",
-      subcategories: [
-        { name: "Мебель", count: 450, icon: "Chair" },
-        { name: "Инструменты", count: 780, icon: "Wrench" },
-        { name: "Растения", count: 920, icon: "Flower" },
-        { name: "Декор", count: 340, icon: "Sparkles" },
+      title: "Дизельное топливо",
+      icon: "Truck",
+      description: "Дизтопливо с улучшенными экологическими показателями",
+      products: [
+        { name: "ДТ Евро-5", price: "55.40", eco: "Евро-5" },
+        { name: "ДТ Арктическое", price: "57.80", eco: "Класс 3" },
+        { name: "ДТ Зимнее ЭКО", price: "56.90", eco: "Евро-6" },
+      ],
+    },
+    {
+      title: "Газовое топливо",
+      icon: "Flame",
+      description: "СПГ и КПГ для экологичного транспорта",
+      products: [
+        { name: "Метан КПГ", price: "28.50", eco: "CO2 -25%" },
+        { name: "СПГ для грузовиков", price: "32.10", eco: "CO2 -20%" },
+        { name: "Пропан автомобильный", price: "26.80", eco: "Класс А" },
+      ],
+    },
+    {
+      title: "Биотопливо",
+      icon: "Leaf",
+      description: "Возобновляемые виды топлива из биомассы",
+      products: [
+        { name: "Биодизель B20", price: "58.90", eco: "CO2 -40%" },
+        { name: "Этанол E85", price: "45.20", eco: "CO2 -60%" },
+        { name: "Биометан", price: "29.90", eco: "CO2 -80%" },
       ],
     },
   ];
 
-  const featuredProducts = [
+  const services = [
     {
-      id: 1,
-      name: "Диван угловой 'Комфорт'",
-      price: 45990,
-      originalPrice: 52990,
-      image:
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400",
-      badge: "Хит продаж",
+      icon: "Search",
+      title: "Подбор топлива",
+      description: "Поможем выбрать оптимальный вид топлива для ваших задач",
     },
     {
-      id: 2,
-      name: "Комплект постельного белья",
-      price: 2990,
-      originalPrice: null,
-      image:
-        "https://images.unsplash.com/photo-1615887024303-74d325b9b7ad?w=400",
-      badge: "Новинка",
+      icon: "Users",
+      title: "Поиск поставщиков",
+      description: "Найдем надежных поставщиков экологичного топлива",
     },
     {
-      id: 3,
-      name: "Садовый стол из тика",
-      price: 18990,
-      originalPrice: 22990,
-      image: "https://images.unsplash.com/photo-1549497538-303791108f95?w=400",
-      badge: "Скидка",
+      icon: "Truck",
+      title: "Организация доставки",
+      description: "Логистика с соблюдением экологических стандартов",
     },
     {
-      id: 4,
-      name: "Торшер 'Уют'",
-      price: 7990,
-      originalPrice: null,
-      image:
-        "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=400",
-      badge: null,
+      icon: "Recycle",
+      title: "Утилизация отходов",
+      description: "Экологичная переработка нефтепродуктов",
+    },
+    {
+      icon: "Award",
+      title: "Сертификация",
+      description: "Помощь в получении экологических сертификатов",
+    },
+    {
+      icon: "Calculator",
+      title: "Экологический след",
+      description: "Расчет и снижение углеродного следа",
+    },
+  ];
+
+  const ecoInitiatives = [
+    {
+      title: "Восстановление лесов",
+      progress: 85,
+      target: "10,000 деревьев",
+      icon: "TreePine",
+    },
+    {
+      title: "Очистка водоемов",
+      progress: 60,
+      target: "50 км береговой линии",
+      icon: "Waves",
+    },
+    {
+      title: "Солнечная энергия",
+      progress: 75,
+      target: "100 МВт мощности",
+      icon: "Sun",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 via-emerald-50 to-blue-50">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-white shadow-sm sticky top-0 z-50 border-b border-green-100">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-8">
               <div className="flex items-center space-x-2">
-                <Icon name="Home" size={28} className="text-green-600" />
+                <Icon name="Leaf" size={32} className="text-green-600" />
                 <span className="text-2xl font-bold text-gray-900">
-                  Уютный Дом
+                  ЭкоТопливо
                 </span>
               </div>
               <nav className="hidden md:flex space-x-6">
@@ -83,19 +119,25 @@ const Index = () => {
                   href="#"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
-                  Для дома
+                  Каталог
                 </a>
                 <a
                   href="#"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
-                  Для сада
+                  Услуги
                 </a>
                 <a
                   href="#"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
-                  Акции
+                  Экология
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-700 hover:text-green-600 font-medium"
+                >
+                  Блог
                 </a>
                 <a
                   href="#"
@@ -110,8 +152,8 @@ const Index = () => {
               <div className="hidden md:flex relative">
                 <input
                   type="text"
-                  placeholder="Поиск товаров..."
-                  className="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder="Поиск нефтепродуктов..."
+                  className="w-80 px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
                 <Icon
                   name="Search"
@@ -120,16 +162,14 @@ const Index = () => {
                 />
               </div>
               <Button variant="ghost" size="icon">
-                <Icon name="Heart" size={20} />
-              </Button>
-              <Button variant="ghost" size="icon" className="relative">
-                <Icon name="ShoppingCart" size={20} />
-                <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  3
-                </span>
+                <Icon name="Calculator" size={20} />
               </Button>
               <Button variant="ghost" size="icon">
-                <Icon name="User" size={20} />
+                <Icon name="Bell" size={20} />
+              </Button>
+              <Button className="bg-green-600 hover:bg-green-700">
+                <Icon name="User" size={16} className="mr-2" />
+                Войти
               </Button>
             </div>
           </div>
@@ -137,57 +177,82 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-blue-600/10"></div>
+        <div className="container mx-auto px-4 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Создайте дом своей мечты с <br />
-              <span className="text-green-600">Уютным Домом</span>
+            <h1 className="text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              Экологичное топливо — <br />
+              <span className="text-green-600">для чистого будущего!</span>
             </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              Более 5000 товаров для дома и сада. Мебель, текстиль, декор,
-              освещение — всё для создания уютной атмосферы в вашем доме
+            <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Платформа посреднических услуг в сфере экологически чистых
+              нефтепродуктов. Соединяем поставщиков и потребителей ради
+              устойчивого развития планеты
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
                 size="lg"
                 className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
               >
                 <Icon name="Sparkles" size={20} className="mr-2" />
-                Смотреть каталог
+                Перейти в каталог
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3"
               >
-                <Icon name="Gift" size={20} className="mr-2" />
-                Идеи для подарков
+                <Icon name="Calculator" size={20} className="mr-2" />
+                Рассчитать экослед
               </Button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  500+
+                </div>
+                <div className="text-gray-600">Партнеров-поставщиков</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  -40%
+                </div>
+                <div className="text-gray-600">Снижение CO₂ выбросов</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  50М л
+                </div>
+                <div className="text-gray-600">Экотоплива поставлено</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
+      {/* Product Categories */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Каталог товаров
+              Каталог экологичных нефтепродуктов
             </h2>
             <p className="text-xl text-gray-600">
-              Выберите категорию для покупок
+              Широкий выбор сертифицированного топлива с низким углеродным
+              следом
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {categories.map((category, index) => (
+          <div className="grid md:grid-cols-2 gap-8">
+            {productCategories.map((category, index) => (
               <Card
                 key={index}
-                className="hover:shadow-lg transition-shadow duration-300"
+                className="hover:shadow-lg transition-shadow duration-300 border-green-100"
               >
-                <CardHeader className="text-center">
+                <CardHeader className="text-center pb-4">
                   <div className="mx-auto mb-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
                     <Icon
                       name={category.icon}
@@ -195,27 +260,36 @@ const Index = () => {
                       className="text-green-600"
                     />
                   </div>
-                  <CardTitle className="text-2xl">{category.title}</CardTitle>
+                  <CardTitle className="text-2xl text-gray-900">
+                    {category.title}
+                  </CardTitle>
+                  <p className="text-gray-600 mt-2">{category.description}</p>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 gap-4">
-                    {category.subcategories.map((sub, idx) => (
+                  <div className="space-y-3">
+                    {category.products.map((product, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer"
+                        className="flex items-center justify-between p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-colors"
                       >
-                        <Icon
-                          name={sub.icon}
-                          size={20}
-                          className="text-gray-600"
-                        />
                         <div>
                           <div className="font-medium text-gray-900">
-                            {sub.name}
+                            {product.name}
                           </div>
-                          <div className="text-sm text-gray-500">
-                            {sub.count} товаров
+                          <div className="text-sm text-green-600 font-medium">
+                            {product.eco}
                           </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-lg font-bold text-gray-900">
+                            {product.price} ₽/л
+                          </div>
+                          <Button
+                            size="sm"
+                            className="mt-1 bg-green-600 hover:bg-green-700"
+                          >
+                            Заказать
+                          </Button>
                         </div>
                       </div>
                     ))}
@@ -227,63 +301,41 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="py-16 bg-orange-50">
+      {/* Services */}
+      <section className="py-16 bg-gradient-to-b from-green-50 to-emerald-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Рекомендуемые товары
+              Посреднические услуги
             </h2>
             <p className="text-xl text-gray-600">
-              Популярные товары этого месяца
+              Полный спектр услуг для экологически ответственного бизнеса
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
+          <div className="grid md:grid-cols-3 gap-6">
+            {services.map((service, index) => (
               <Card
-                key={product.id}
-                className="hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+                key={index}
+                className="hover:shadow-lg transition-shadow duration-300 border-green-100"
               >
-                <div className="relative">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-48 object-cover"
-                  />
-                  {product.badge && (
-                    <span
-                      className={`absolute top-2 left-2 px-2 py-1 text-xs font-semibold rounded-full ${
-                        product.badge === "Хит продаж"
-                          ? "bg-red-100 text-red-800"
-                          : product.badge === "Новинка"
-                            ? "bg-blue-100 text-blue-800"
-                            : "bg-green-100 text-green-800"
-                      }`}
-                    >
-                      {product.badge}
-                    </span>
-                  )}
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">
-                    {product.name}
-                  </h3>
-                  <div className="flex items-center justify-between mb-3">
-                    <div>
-                      <span className="text-xl font-bold text-gray-900">
-                        {product.price.toLocaleString()} ₽
-                      </span>
-                      {product.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through ml-2">
-                          {product.originalPrice.toLocaleString()} ₽
-                        </span>
-                      )}
-                    </div>
+                <CardContent className="p-6 text-center">
+                  <div className="mx-auto mb-4 w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
+                    <Icon
+                      name={service.icon}
+                      size={28}
+                      className="text-green-600"
+                    />
                   </div>
-                  <Button className="w-full bg-green-600 hover:bg-green-700">
-                    <Icon name="ShoppingCart" size={16} className="mr-2" />В
-                    корзину
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <Button
+                    variant="outline"
+                    className="border-green-600 text-green-600 hover:bg-green-50"
+                  >
+                    Узнать больше
                   </Button>
                 </CardContent>
               </Card>
@@ -292,52 +344,89 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Advantages */}
+      {/* Eco Initiatives */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Почему выбирают нас
+              Экологические инициативы
             </h2>
+            <p className="text-xl text-gray-600">
+              Наш вклад в сохранение планеты для будущих поколений
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                icon: "Truck",
-                title: "Быстрая доставка",
-                desc: "Доставим за 1-3 дня",
-              },
-              {
-                icon: "Shield",
-                title: "Гарантия качества",
-                desc: "2 года гарантии",
-              },
-              {
-                icon: "CreditCard",
-                title: "Удобная оплата",
-                desc: "Наличные и карты",
-              },
-              {
-                icon: "Headphones",
-                title: "Поддержка 24/7",
-                desc: "Всегда на связи",
-              },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="mx-auto mb-4 w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
-                  <Icon
-                    name={item.icon}
-                    size={32}
-                    className="text-orange-600"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {ecoInitiatives.map((initiative, index) => (
+              <Card
+                key={index}
+                className="hover:shadow-lg transition-shadow duration-300 border-green-100"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                      <Icon
+                        name={initiative.icon}
+                        size={24}
+                        className="text-green-600"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {initiative.title}
+                    </h3>
+                  </div>
+                  <div className="mb-4">
+                    <div className="flex justify-between text-sm text-gray-600 mb-2">
+                      <span>Прогресс</span>
+                      <span>{initiative.progress}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div
+                        className="bg-green-600 h-2 rounded-full transition-all duration-300"
+                        style={{ width: `${initiative.progress}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  <p className="text-gray-600">
+                    <strong>Цель:</strong> {initiative.target}
+                  </p>
+                  <Button className="w-full mt-4 bg-green-600 hover:bg-green-700">
+                    <Icon name="Heart" size={16} className="mr-2" />
+                    Поддержать
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-4">
+            Присоединяйтесь к экологической революции
+          </h2>
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            Каждый литр экологичного топлива — это шаг к чистому будущему.
+            Начните свой путь к углеродной нейтральности уже сегодня.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-white text-green-600 hover:bg-gray-100"
+            >
+              <Icon name="UserPlus" size={20} className="mr-2" />
+              Стать партнером
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-white text-white hover:bg-white/10"
+            >
+              <Icon name="MapPin" size={20} className="mr-2" />
+              Карта инициатив
+            </Button>
           </div>
         </div>
       </section>
@@ -348,59 +437,76 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Icon name="Home" size={24} className="text-green-400" />
-                <span className="text-xl font-bold">Уютный Дом</span>
+                <Icon name="Leaf" size={24} className="text-green-400" />
+                <span className="text-xl font-bold">ЭкоТопливо</span>
               </div>
-              <p className="text-gray-400">
-                Создаем уют в каждом доме с 2020 года
+              <p className="text-gray-400 mb-4">
+                Экологическая платформа для торговли нефтепродуктами
               </p>
+              <div className="flex space-x-3">
+                <Icon
+                  name="Facebook"
+                  size={20}
+                  className="text-gray-400 hover:text-white cursor-pointer"
+                />
+                <Icon
+                  name="Twitter"
+                  size={20}
+                  className="text-gray-400 hover:text-white cursor-pointer"
+                />
+                <Icon
+                  name="Linkedin"
+                  size={20}
+                  className="text-gray-400 hover:text-white cursor-pointer"
+                />
+              </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Каталог</h4>
+              <h4 className="font-semibold mb-4">Продукты</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <a href="#" className="hover:text-white">
-                    Мебель
+                    Бензин ЭКО
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Текстиль
+                    Дизельное топливо
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Декор
+                    Газовое топливо
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Сад
+                    Биотопливо
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Покупателям</h4>
+              <h4 className="font-semibold mb-4">Услуги</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <a href="#" className="hover:text-white">
-                    Доставка
+                    Подбор топлива
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Оплата
+                    Логистика
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Возврат
+                    Сертификация
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white">
-                    Гарантия
+                    Утилизация
                   </a>
                 </li>
               </ul>
@@ -408,11 +514,26 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Контакты</h4>
               <div className="space-y-2 text-gray-400">
-                <div>📞 +7 (800) 123-45-67</div>
-                <div>📧 info@uyutdom.ru</div>
-                <div>📍 Москва, ул. Уютная, 1</div>
+                <div className="flex items-center">
+                  <Icon name="Phone" size={16} className="mr-2" />
+                  +7 (800) 555-01-01
+                </div>
+                <div className="flex items-center">
+                  <Icon name="Mail" size={16} className="mr-2" />
+                  info@ecotoplivo.ru
+                </div>
+                <div className="flex items-center">
+                  <Icon name="MapPin" size={16} className="mr-2" />
+                  Москва, Лубянский пр., 20с1
+                </div>
               </div>
             </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>
+              &copy; 2024 ЭкоТопливо. Все права защищены. | Создано для
+              устойчивого будущего
+            </p>
           </div>
         </div>
       </footer>
