@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useCart } from "@/contexts/CartContext";
 import { Link } from "react-router-dom";
+import AuthModal from "@/components/modals/AuthModal";
+import EcoCalculatorModal from "@/components/modals/EcoCalculatorModal";
 
 const Index = () => {
   const { addItem } = useCart();
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const productCategories = [
     {
       title: "Бензин",
@@ -118,36 +122,36 @@ const Index = () => {
                 </span>
               </div>
               <nav className="hidden md:flex space-x-6">
-                <a
-                  href="#"
+                <Link
+                  to="/catalog"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
                   Каталог
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/services"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
                   Услуги
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/ecology"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
                   Экология
-                </a>
+                </Link>
                 <a
                   href="#"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
                   Блог
                 </a>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="text-gray-700 hover:text-green-600 font-medium"
                 >
                   О нас
-                </a>
+                </Link>
               </nav>
             </div>
 
@@ -164,13 +168,20 @@ const Index = () => {
                   className="absolute right-3 top-3 text-gray-400"
                 />
               </div>
-              <Button variant="ghost" size="icon">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsCalculatorOpen(true)}
+              >
                 <Icon name="Calculator" size={20} />
               </Button>
               <Button variant="ghost" size="icon">
                 <Icon name="Bell" size={20} />
               </Button>
-              <Button className="bg-green-600 hover:bg-green-700">
+              <Button
+                className="bg-green-600 hover:bg-green-700"
+                onClick={() => setIsAuthOpen(true)}
+              >
                 <Icon name="User" size={16} className="mr-2" />
                 Войти
               </Button>
@@ -207,6 +218,7 @@ const Index = () => {
                 variant="outline"
                 size="lg"
                 className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3"
+                onClick={() => setIsCalculatorOpen(true)}
               >
                 <Icon name="Calculator" size={20} className="mr-2" />
                 Рассчитать экослед
@@ -348,6 +360,7 @@ const Index = () => {
                   <Button
                     variant="outline"
                     className="border-green-600 text-green-600 hover:bg-green-50"
+                    onClick={() => (window.location.href = "/services")}
                   >
                     Узнать больше
                   </Button>
@@ -551,6 +564,12 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
+      <EcoCalculatorModal
+        isOpen={isCalculatorOpen}
+        onClose={() => setIsCalculatorOpen(false)}
+      />
     </div>
   );
 };
