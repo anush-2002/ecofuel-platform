@@ -54,40 +54,25 @@ const Header = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <div className="hidden md:flex relative">
-              <input
-                type="text"
-                placeholder="Поиск нефтепродуктов..."
-                className="w-80 px-4 py-2 border border-green-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-              <Icon
-                name="Search"
-                size={20}
-                className="absolute right-3 top-3 text-gray-400"
-              />
-            </div>
-
             <Button
-              variant="ghost"
-              size="icon"
+              variant="outline"
+              size="sm"
               onClick={() => setIsCalculatorOpen(true)}
+              className="hidden md:flex"
             >
-              <Icon name="Calculator" size={20} />
-            </Button>
-
-            <Button variant="ghost" size="icon">
-              <Icon name="Bell" size={20} />
+              <Icon name="Calculator" size={16} className="mr-2" />
+              Эко-калькулятор
             </Button>
 
             <Button
-              variant="ghost"
-              size="icon"
-              className="relative"
+              variant="outline"
+              size="sm"
               onClick={() => setIsCartOpen(true)}
+              className="relative"
             >
-              <Icon name="ShoppingCart" size={20} />
+              <Icon name="ShoppingCart" size={16} />
               {getTotalItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {getTotalItems()}
                 </span>
               )}
@@ -95,22 +80,19 @@ const Header = () => {
 
             {isAuthenticated ? (
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-600">{user?.phone}</span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={logout}
-                  className="text-red-600 hover:text-red-700"
-                >
+                <span className="text-sm text-gray-700">
+                  Привет, {user?.name}!
+                </span>
+                <Button variant="outline" size="sm" onClick={logout}>
                   Выйти
                 </Button>
               </div>
             ) : (
               <Button
-                className="bg-green-600 hover:bg-green-700"
+                variant="outline"
+                size="sm"
                 onClick={() => setIsAuthOpen(true)}
               >
-                <Icon name="User" size={16} className="mr-2" />
                 Войти
               </Button>
             )}
