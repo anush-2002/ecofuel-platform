@@ -49,42 +49,39 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
                 className="flex items-center justify-between p-4 border rounded-lg"
               >
                 <div className="flex-1">
-                  <h4 className="font-medium">{item.name}</h4>
+                  <h3 className="font-medium">{item.name}</h3>
                   <p className="text-sm text-gray-500">{item.category}</p>
                   <p className="text-sm text-green-600">{item.eco}</p>
                 </div>
-
                 <div className="flex items-center space-x-3">
                   <div className="flex items-center space-x-2">
                     <Button
-                      variant="outline"
                       size="sm"
+                      variant="outline"
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                     >
-                      -
+                      <Icon name="Minus" size={16} />
                     </Button>
                     <span className="w-8 text-center">{item.quantity}</span>
                     <Button
-                      variant="outline"
                       size="sm"
+                      variant="outline"
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                     >
-                      +
+                      <Icon name="Plus" size={16} />
                     </Button>
                   </div>
-
                   <div className="text-right">
-                    <p className="font-bold">
+                    <p className="font-medium">
                       {(parseFloat(item.price) * item.quantity).toFixed(2)} ₽
                     </p>
                     <p className="text-sm text-gray-500">{item.price} ₽/л</p>
                   </div>
-
                   <Button
-                    variant="ghost"
                     size="sm"
+                    variant="ghost"
                     onClick={() => removeItem(item.id)}
-                    className="text-red-500"
+                    className="text-red-500 hover:text-red-600"
                   >
                     <Icon name="Trash2" size={16} />
                   </Button>
@@ -94,21 +91,20 @@ const CartModal = ({ isOpen, onClose }: CartModalProps) => {
 
             <div className="border-t pt-4">
               <div className="flex justify-between items-center mb-4">
-                <span className="text-lg font-bold">
-                  Итого: {getTotalPrice().toFixed(2)} ₽
+                <span className="text-lg font-medium">Итого:</span>
+                <span className="text-xl font-bold text-green-600">
+                  {getTotalPrice().toFixed(2)} ₽
                 </span>
-                <Button variant="outline" onClick={clearCart}>
+              </div>
+              <div className="flex space-x-3">
+                <Button
+                  variant="outline"
+                  onClick={clearCart}
+                  className="flex-1"
+                >
                   Очистить корзину
                 </Button>
-              </div>
-
-              <div className="flex space-x-3">
-                <Button className="flex-1 bg-green-600 hover:bg-green-700">
-                  Оформить заказ
-                </Button>
-                <Button variant="outline" onClick={onClose}>
-                  Продолжить покупки
-                </Button>
+                <Button className="flex-1">Оформить заказ</Button>
               </div>
             </div>
           </div>

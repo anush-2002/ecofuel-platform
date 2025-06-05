@@ -108,6 +108,16 @@ const Index = () => {
     },
   ];
 
+  const handleAddToCart = (product: any, category: string) => {
+    addItem({
+      id: `${category}-${product.name}`,
+      name: product.name,
+      price: product.price,
+      eco: product.eco,
+      category: category,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 via-emerald-50 to-blue-50">
       {/* Header */}
@@ -191,135 +201,90 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-blue-600/10"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Экологичное топливо — <br />
-              <span className="text-green-600">для чистого будущего!</span>
-            </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Платформа посреднических услуг в сфере экологически чистых
-              нефтепродуктов. Соединяем поставщиков и потребителей ради
-              устойчивого развития планеты
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link to="/catalog">
-                <Button
-                  size="lg"
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
-                >
-                  <Icon name="Sparkles" size={20} className="mr-2" />
-                  Перейти в каталог
-                </Button>
-              </Link>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-green-600 text-green-600 hover:bg-green-50 px-8 py-3"
-                onClick={() => setIsCalculatorOpen(true)}
-              >
-                <Icon name="Calculator" size={20} className="mr-2" />
-                Рассчитать экослед
-              </Button>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">
-                  500+
-                </div>
-                <div className="text-gray-600">Партнеров-поставщиков</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">
-                  -40%
-                </div>
-                <div className="text-gray-600">Снижение CO₂ выбросов</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">
-                  50М л
-                </div>
-                <div className="text-gray-600">Экотоплива поставлено</div>
-              </div>
-            </div>
+      <section className="bg-gradient-to-r from-green-600 to-green-800 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl font-bold mb-6">
+            Экологически чистое топливо
+          </h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Снижаем выбросы CO2 и заботимся о будущем нашей планеты
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              variant="secondary"
+              onClick={() => setIsCalculatorOpen(true)}
+              className="flex items-center"
+            >
+              <Icon name="Calculator" size={20} className="mr-2" />
+              Калькулятор экономии
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setIsAuthOpen(true)}
+              className="bg-white text-green-600 hover:bg-green-50 border-white"
+            >
+              Войти в аккаунт
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Product Categories */}
-      <section className="py-16 bg-white">
+      {/* Products Section */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Каталог экологичных нефтепродуктов
-            </h2>
-            <p className="text-xl text-gray-600">
-              Широкий выбор сертифицированного топлива с низким углеродным
-              следом
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {productCategories.map((category, index) => (
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+            Наша продукция
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {productCategories.map((category) => (
               <Card
-                key={index}
-                className="hover:shadow-lg transition-shadow duration-300 border-green-100"
+                key={category.title}
+                className="hover:shadow-lg transition-shadow"
               >
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <CardHeader>
+                  <CardTitle className="flex items-center">
                     <Icon
                       name={category.icon}
-                      size={32}
-                      className="text-green-600"
+                      size={24}
+                      className="mr-2 text-green-600"
                     />
-                  </div>
-                  <CardTitle className="text-2xl text-gray-900">
                     {category.title}
                   </CardTitle>
-                  <p className="text-gray-600 mt-2">{category.description}</p>
+                  <p className="text-sm text-gray-600">
+                    {category.description}
+                  </p>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    {category.products.map((product, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center justify-between p-3 rounded-lg bg-gray-50 hover:bg-green-50 transition-colors"
-                      >
-                        <div>
-                          <div className="font-medium text-gray-900">
-                            {product.name}
-                          </div>
-                          <div className="text-sm text-green-600 font-medium">
-                            {product.eco}
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-lg font-bold text-gray-900">
-                            {product.price} ₽/л
-                          </div>
-                          <Button
-                            size="sm"
-                            className="mt-1 bg-green-600 hover:bg-green-700"
-                            onClick={() =>
-                              addItem({
-                                id: `${category.title.toLowerCase()}-${idx}`,
-                                name: product.name,
-                                price: product.price,
-                                eco: product.eco,
-                                category: category.title,
-                              })
-                            }
-                          >
-                            Заказать
-                          </Button>
-                        </div>
+                <CardContent className="space-y-3">
+                  {category.products.map((product) => (
+                    <div
+                      key={product.name}
+                      className="flex flex-col p-3 border rounded-lg hover:bg-green-50 transition-colors"
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-medium text-sm">{product.name}</h4>
+                        <span className="text-green-600 font-bold">
+                          {product.price} ₽/л
+                        </span>
                       </div>
-                    ))}
-                  </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-xs text-gray-500 bg-green-100 px-2 py-1 rounded">
+                          {product.eco}
+                        </span>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() =>
+                            handleAddToCart(product, category.title)
+                          }
+                          className="text-xs"
+                        >
+                          Заказать
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
                 </CardContent>
               </Card>
             ))}
