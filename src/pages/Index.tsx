@@ -2,8 +2,11 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { useCart } from "@/contexts/CartContext";
+import { Link } from "react-router-dom";
 
 const Index = () => {
+  const { addItem } = useCart();
   const productCategories = [
     {
       title: "Бензин",
@@ -191,13 +194,15 @@ const Index = () => {
               устойчивого развития планеты
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button
-                size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
-              >
-                <Icon name="Sparkles" size={20} className="mr-2" />
-                Перейти в каталог
-              </Button>
+              <Link to="/catalog">
+                <Button
+                  size="lg"
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3"
+                >
+                  <Icon name="Sparkles" size={20} className="mr-2" />
+                  Перейти в каталог
+                </Button>
+              </Link>
               <Button
                 variant="outline"
                 size="lg"
@@ -287,6 +292,15 @@ const Index = () => {
                           <Button
                             size="sm"
                             className="mt-1 bg-green-600 hover:bg-green-700"
+                            onClick={() =>
+                              addItem({
+                                id: `${category.title.toLowerCase()}-${idx}`,
+                                name: product.name,
+                                price: product.price,
+                                eco: product.eco,
+                                category: category.title,
+                              })
+                            }
                           >
                             Заказать
                           </Button>
